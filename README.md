@@ -1,6 +1,6 @@
-# Tauri + React + Typescript
+# Collaborative PNGTubing App
 
-This template should help get you started developing with Tauri, React and Typescript in Vite.
+This will eventually be a collaborative PNGTubing app that is built with Tauri, React and Typescript in Vite. I am working on the UI at the moment, so it is very bare-bones. Please feel free to contribute code or feature ideas, but know that I will probably not accept any new feature requests until I have worked through my own backlog of ideas. Please do not submit any vibe coded features. Anyone who submits generative AI art assets will be banned from contributing in the future.
 
 ## Recommended IDE Setup
 
