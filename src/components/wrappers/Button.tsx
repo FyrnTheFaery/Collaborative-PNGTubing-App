@@ -9,7 +9,7 @@ export interface ButtonProps extends AriaButtonProps {
 
 let button = tv({
     extend: focusRing,
-    base: "flex flex-row justify-center items-center w-fit h-fit p-2 rounded-xl",
+    base: "flex flex-row justify-center items-center w-fit h-fit p-2 gap-1 rounded-xl",
     variants: {
         variant: {
             primary: 'bg-linear-to-br dark:from-violet-200/50 dark:via-violet-400/50 dark:to-violet-600/50 ' + 

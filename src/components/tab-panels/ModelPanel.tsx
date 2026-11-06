@@ -78,17 +78,17 @@ export const ModelPanel: React.FC<{}> = () => {
                 <SelectWithTagGroup
                     aria-label="Model Filters"
                     tags={[
-                        {id: "Mouse", name: "Mouse"},
-                        {id: "Keyboard", name: "Keyboard"},
-                        {id: "PNGTuber", name: "PNGTuber"}
+                        {id: "mouse", name: "Mouse"},
+                        {id: "keyboard", name: "Keyboard"},
+                        {id: "pngtuber", name: "PNGTuber"}
                     ]}
                 />
                 <Button variant="secondary"><Icon icon={"material-symbols:folder-open-outline-rounded"}/></Button>
             </Header>
             <GridList
-                // layout="grid"
+                layout="stack"
                 orientation="vertical"
-                aria-label="Mouse Models"
+                aria-label={"Model List"}
                 selectionMode="multiple"
                 selectedKeys={selectedModelIDs as Iterable<Key>}
                 // onSelectionChange={(keys) => handleSelectionChange(keys)}

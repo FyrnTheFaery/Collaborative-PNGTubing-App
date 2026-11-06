@@ -27,8 +27,6 @@ const styles = tv({
     }
 });
 
-
-
 export function Tabs(props: TabsProps) {
     return <RACTabs {...props} className={composeTailwindRenderProps(props.className, "flex flex-col w-full h-fit")}/>;
 }

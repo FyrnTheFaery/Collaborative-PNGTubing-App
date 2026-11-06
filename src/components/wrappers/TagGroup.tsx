@@ -30,7 +30,7 @@ const ColorContext = createContext<Color>('gray');
 
 const tagStyles = tv({
     extend: focusRing,
-    base: 'transition cursor-default text-xs rounded-full border px-3 py-0.5 flex items-center max-w-fit gap-1 font-sans [-webkit-tap-highlight-color:transparent]',
+    base: 'transition cursor-default text-xs rounded-full border px-3 py-1 flex items-center max-w-fit gap-1 font-sans [-webkit-tap-highlight-color:transparent] justify-center items-center text-center',
     variants: {
         color: {
             gray: '',
@@ -42,7 +42,7 @@ const tagStyles = tv({
             true: 'pr-1'
         },
         isSelected: {
-            true: 'bg-blue-600 text-white border-transparent forced-colors:bg-[Highlight] forced-colors:text-[HighlightText] forced-color-adjust-none'
+            true: 'bg-violet-600 text-white border-transparent forced-colors:bg-[Highlight] forced-colors:text-[HighlightText] forced-color-adjust-none'
         },
         isDisabled: {
             true: 'bg-neutral-100 dark:bg-transparent dark:border-white/20 text-neutral-300 dark:text-neutral-600 forced-colors:text-[GrayText]'

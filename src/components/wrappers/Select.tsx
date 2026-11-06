@@ -91,7 +91,6 @@ export interface SelectWithTagGroupProps<T extends SelectTag> extends Omit<AriaS
 // Renders AriaSelect directly (not the Select wrapper above), since the Select wrapper puts its children inside a ListBox
 export function SelectWithTagGroup<T extends SelectTag>({label, tags, ...props}: SelectWithTagGroupProps<T>) {
     let triggerRef = useRef<HTMLDivElement | null>(null);
-    // let {contains} = useFilter({sensitivity: 'base'});
 
     return (
         <AriaSelect
@@ -103,15 +102,18 @@ export function SelectWithTagGroup<T extends SelectTag>({label, tags, ...props}:
             )}
         >
             {label && <Label>{label}</Label>}
-            <Group aria-label={props['aria-label'] ?? label} ref={triggerRef} className="flex flex-row items-center gap-2">
-                <SelectValue<T> className="flex-1">
+            <Group aria-label={props['aria-label'] ?? label} ref={triggerRef} className="flex flex-row items-center gap-4">
+                <Button variant="secondary">
+                    <Icon icon="material-symbols:filter-alt-outline"/>
+                    Select Tags
+                </Button>
+                <SelectValue<T> className="flex-1 bg-transparent rounded-xl items-center text-center">
                     {({selectedItems, state}) => (
                         <TagGroup
-                            aria-label="Selected tags"
+                            aria-label="Selected Tags"
                             items={selectedItems.filter(item => item != null)}
-                            renderEmptyState={() => 'No selected items'}
+                            renderEmptyState={() => {}}
                             onRemove={(keys) => {
-                                // Remove keys from Select state.
                                 if (Array.isArray(state.value)) {
                                     state.setValue(state.value.filter(k => !keys.has(k)));
                                 }
@@ -121,7 +123,6 @@ export function SelectWithTagGroup<T extends SelectTag>({label, tags, ...props}:
                         </TagGroup>
                     )}
                 </SelectValue>
-                <Button variant="primary"><Icon icon="material-symbols:add-2-rounded"/></Button>
             </Group>
             <Popover
                 // Position popover relative to the wrapping div instead of the Button

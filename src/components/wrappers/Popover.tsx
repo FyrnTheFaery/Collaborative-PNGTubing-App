@@ -6,7 +6,6 @@ import {
 import {composeRenderProps} from 'react-aria-components/composeRenderProps';
 import React from 'react';
 import {tv} from 'tailwind-variants';
-import { Icon } from '@iconify/react';
 
 export interface PopoverProps extends Omit<AriaPopoverProps, 'children'> {
     showArrow?: boolean;
