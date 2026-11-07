@@ -10,6 +10,8 @@ import { TextField } from "../wrappers/Textfield"
 import { FieldError } from "../wrappers/Field"
 import { SelectWithTagGroup } from "../wrappers/Select"
 
+import { open } from '@tauri-apps/plugin-dialog';
+
 // FIX_ME - Get the mouse models from the backend instead of relying on the frontend mockup
 export const ModelPanel: React.FC<{}> = () => {
 
@@ -28,6 +30,14 @@ export const ModelPanel: React.FC<{}> = () => {
         // FIX_ME - Convert each selection to a modelID string
         let newIDs: Set<String> = new Set<String>(newModelIDs.toString());
         setSelectedModelIDs(newIDs);
+    }
+
+    async function handleFolderClick() {
+        const file = await open({
+            multiple: true,
+            directory: true,
+        });
+        console.log(file);
     }
 
     function handleAddClick(name: ModelInfoProps["name"], type: ModelInfoProps["type"], src: ModelInfoProps["src"]) {
@@ -83,7 +93,7 @@ export const ModelPanel: React.FC<{}> = () => {
                         {id: "pngtuber", name: "PNGTuber"}
                     ]}
                 />
-                <Button variant="secondary"><Icon icon={"material-symbols:folder-open-outline-rounded"}/></Button>
+                <Button variant="secondary" onClick={() => handleFolderClick()}><Icon icon={"material-symbols:folder-open-outline-rounded"}/></Button>
             </Header>
             <GridList
                 layout="stack"

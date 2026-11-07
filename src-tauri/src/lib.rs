@@ -1,6 +1,8 @@
 mod inputs;
-use std::{sync::{Mutex}, collections::HashMap};
+use std::{collections::HashMap, fs::{self, exists}, sync::Mutex};
 use tauri::Manager;
+
+use std::fs::DirBuilder;
 
 // use device_query::{DeviceQuery, DeviceState, MouseState, Keycode};
 
@@ -10,14 +12,25 @@ fn greet(name: &str) -> String {
     format!("Hello, {}! You've been greeted from Rust!", name)
 }
 
+// Open the model folder
 // #[tauri::command]
-// fn get_models(models: &str) -> String {
-//     format!("Models: {}", models)
+// fn greet(name: &str) -> String {
+//     format!("Hello, {}! You've been greeted from Rust!", name)
 // }
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
+    
+    let dir_builder: DirBuilder = DirBuilder::new();
+
+    let model_dir_exists = exists("models").unwrap();
+    if !model_dir_exists {
+        dir_builder.create("models").unwrap();
+    }
+    assert!(fs::metadata("models").unwrap().is_dir());
+
     tauri::Builder::default()
+        .plugin(tauri_plugin_dialog::init())
         .plugin(tauri_plugin_opener::init())
         // .manage(inputs::ChannelManager{Mutex::new(HashMap::new())})
         .setup(|app| {
